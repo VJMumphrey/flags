@@ -17,7 +17,7 @@ pub fn main() !void {
         .{ .whitespace = .indent_2 },
         &file_writer.interface,
     );
-    try file_writer.interface.flush();;
+    try file_writer.interface.flush();
 }
 
 const Flags = struct {
