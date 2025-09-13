@@ -56,9 +56,14 @@ Then set up the dependency in your `build.zig`:
     const flags_dep = b.dependency("flags", .{
         .target = target,
         .optimize = optimize,
-    })
+    }).module("flags");
 
-    exe.root_module.addImport("flags", flags_dep.module("flags"));
+    ......
+
+    // inside of your module
+    .imports = &.{
+        .{ .name = "flags", .module = flags },
+    },
 ```
 
 See the [examples](examples/) for basic usage.

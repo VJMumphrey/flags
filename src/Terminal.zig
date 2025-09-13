@@ -3,15 +3,15 @@ const Terminal = @This();
 const std = @import("std");
 const ColorScheme = @import("ColorScheme.zig");
 
-const tty = std.io.tty;
+const tty = std.Io.tty;
 const File = std.fs.File;
 
-writer: File.Writer,
+writer: *std.Io.Writer,
 config: tty.Config,
 
-pub fn init(file: File) Terminal {
+pub fn init(file: File, writer: *std.Io.Writer) Terminal {
     return .{
-        .writer = file.writer(),
+        .writer = writer,
         .config = tty.detectConfig(file),
     };
 }
